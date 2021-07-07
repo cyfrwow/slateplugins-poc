@@ -57,6 +57,7 @@ import {
   createEditorPlugins,
   serializeHTMLFromNodes,
   createTrailingBlockPlugin,
+  insertEmptyElement,
   /**toolbar */
   createImagePlugin,
   createLinkPlugin,
@@ -185,7 +186,6 @@ const optionsAutoformat = {
     {
       type: ELEMENT_HR,
       markup: "---",
-      preFormat,
     },
     {
       type: ELEMENT_LI,
@@ -330,7 +330,7 @@ function App() {
     setValue(slateObject);
     setMarkdownValue(slateToMd(slateObject));
     const html = serializeHTMLFromNodes(editor, {
-      plugins: pluginsBasic,
+      plugins: plugins,
       nodes: value ? [...value] : [],
     });
     setHtmlValue(html);
