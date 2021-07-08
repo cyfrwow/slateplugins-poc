@@ -3,16 +3,12 @@ import {
   useEventEditorId,
   getSlatePluginType,
   ToolbarMark,
-  ToolbarElement,
-  ToolbarCodeBlock,
   MARK_BOLD,
   MARK_ITALIC,
   MARK_UNDERLINE,
   MARK_STRIKETHROUGH,
   MARK_SUBSCRIPT,
   MARK_SUPERSCRIPT,
-  ELEMENT_BLOCKQUOTE,
-  ELEMENT_CODE_BLOCK,
 } from "@udecode/slate-plugins";
 
 export const ToolbarButtonsBasicMarks = () => {
@@ -42,14 +38,6 @@ export const ToolbarButtonsBasicMarks = () => {
         type={getSlatePluginType(editor, MARK_SUBSCRIPT)}
         clear={getSlatePluginType(editor, MARK_SUPERSCRIPT)}
         icon={"sub"}
-      />
-      <ToolbarElement
-        type={getSlatePluginType(editor, ELEMENT_BLOCKQUOTE)}
-        icon={'""'}
-      />
-      <ToolbarCodeBlock
-        type={getSlatePluginType(editor, ELEMENT_CODE_BLOCK)}
-        icon={"[]"}
       />
     </>
   );

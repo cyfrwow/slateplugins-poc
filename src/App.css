@@ -10,6 +10,8 @@
   height: 100vh;
   max-height: 100vh;
   padding: 10px;
+  position: relative;
+  border-right: 1px solid #ededed;
 }
 .toolbar {
   display: flex;
@@ -31,4 +33,13 @@
 }
 .slate-ToolbarButton-active {
   background-color: #f2f2f2;
+}
+.slate-HeadingToolbar {
+  position: absolute;
+  margin: 0;
+}
+.slate-HeadingToolbar ~ div {
+  position: absolute !important;
+  top: 160px;
+  width: 100%;
 }

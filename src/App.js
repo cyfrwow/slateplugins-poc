@@ -7,30 +7,41 @@ import {
   HeadingToolbar,
   createSlatePluginsComponents,
   createSlatePluginsOptions,
+  deserializeHTMLToDocumentFragment,
 } from "@udecode/slate-plugins";
-// import { createEditor } from "slate";
-// import slateToMd from "./slateToMd";
-import { Toolbar } from "./toolbar";
+import Toolbar from "./toolbar";
 import plugins from "./plugins";
+import htmlfile from "./test";
 import "./App.css";
 
 const components = createSlatePluginsComponents();
 const options = createSlatePluginsOptions();
 
 function App() {
-  const [value, setValue] = useState(null);
-  //   const [markdownValue, setMarkdownValue] = useState(null);
-  const [htmlValue, setHtmlValue] = useState("");
   const id = "slate-plugins-editor";
   const editor = useMemo(
     () => createEditorPlugins({ id, plugins, options, components }),
     []
   );
+  const initialValue = useMemo(() => {
+    return [
+      {
+        children: deserializeHTMLToDocumentFragment(editor, {
+          plugins,
+          element: htmlfile,
+        }),
+      },
+    ];
+  }, [editor]);
+
+  const [value, setValue] = useState(initialValue);
+  const [htmlValue, setHtmlValue] = useState("");
+
   useEffect(() => {
     if (value) {
       const html = serializeHTMLFromNodes(editor, {
         plugins,
-        nodes: value ? [...value] : [],
+        nodes: value,
       });
       setHtmlValue(html);
     }
@@ -38,13 +49,6 @@ function App() {
 
   function handleOnChange(slateObject) {
     setValue(slateObject);
-    // setMarkdownValue(slateToMd(slateObject));
-    const html = serializeHTMLFromNodes(editor, {
-      plugins,
-      nodes: value ? [...value] : [],
-    });
-    setHtmlValue((prevState) => html);
-    // console.log({ html });
   }
 
   const editableProps = {
@@ -67,6 +71,7 @@ function App() {
           components={components}
           options={options}
           autofocus={true}
+          initialValue={value}
           editableProps={editableProps}
           onChange={(newValue) => handleOnChange(newValue)}
         />

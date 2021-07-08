@@ -5,6 +5,7 @@ import {
   ToolbarLinkElement,
   ToolbarImageElement,
   ToolbarButtonsTable,
+  ToolbarButtonsCodeMarks,
 } from "./index";
 export const Toolbar = () => {
   return (
@@ -15,6 +16,7 @@ export const Toolbar = () => {
         </li>
         <li className="toolbar__listitem">
           <ToolbarButtonsBasicMarks />
+          <ToolbarButtonsCodeMarks />
         </li>
         <li className="toolbar__listitem">
           <ToolbarButtonsList />

@@ -9,7 +9,8 @@ import {
   createItalicPlugin,
   createUnderlinePlugin,
   createStrikethroughPlugin,
-  createCodePlugin,
+  createSubscriptPlugin,
+  createSuperscriptPlugin,
 } from "@udecode/slate-plugins";
 
 const plugins = [
@@ -23,12 +24,14 @@ const plugins = [
   createCodeBlockPlugin(), // code block element
   createHeadingPlugin(), // heading elements
 
-  // marks
-  createBoldPlugin(), // bold mark
-  createItalicPlugin(), // italic mark
-  createUnderlinePlugin(), // underline mark
-  createStrikethroughPlugin(), // strikethrough mark
-  createCodePlugin(), // code mark
+  // marks - bold, italic, underline, strikethrough, sub, sup, code
+  createBoldPlugin,
+  createItalicPlugin,
+  createUnderlinePlugin,
+  createStrikethroughPlugin,
+  createSubscriptPlugin,
+  createSuperscriptPlugin,
+  createCodeBlockPlugin,
 ];
 
 export default plugins;
