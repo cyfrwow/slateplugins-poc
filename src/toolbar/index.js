@@ -4,6 +4,7 @@ import { ToolbarButtonsList } from "./ToolbarButtonsList";
 import { ToolbarLinkElement } from "./ToolbarLinkElement";
 import { ToolbarImageElement } from "./ToolbarImageElement";
 import { ToolbarButtonsTable } from "./ToolbarButtonsTable";
+import { Toolbar } from "./Toolbar";
 
 export {
   ToolbarButtonsBasicElements,
@@ -12,4 +13,5 @@ export {
   ToolbarLinkElement,
   ToolbarImageElement,
   ToolbarButtonsTable,
+  Toolbar,
 };
