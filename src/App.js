@@ -55,9 +55,11 @@ import {
   isBlockAboveEmpty,
   isSelectionAtBlockStart,
   createEditorPlugins,
+  //   createEditor,
+  //   withSlatePlugins,
+  //   pipe,
   serializeHTMLFromNodes,
   createTrailingBlockPlugin,
-  insertEmptyElement,
   /**toolbar */
   createImagePlugin,
   createLinkPlugin,
@@ -67,7 +69,9 @@ import {
   createSelectOnBackspacePlugin,
   /** KEYS */
   KEYS_HEADING,
+  HeadingToolbar,
 } from "@udecode/slate-plugins";
+import { createEditor } from "slate";
 import slateToMd from "./slateToMd";
 import {
   ToolbarButtonsBasicElements,
@@ -325,12 +329,17 @@ function App() {
   const [value, setValue] = useState(null);
   const [markdownValue, setMarkdownValue] = useState(null);
   const [htmlValue, setHtmlValue] = useState("");
-  const editor = createEditorPlugins();
+  const id = "slate-plugins-editor";
+  //   const editor = pipe(
+  //     createEditor(),
+  //     withSlatePlugins({ id, plugins, options, components })
+  //   );
+  const editor = createEditorPlugins({ id, plugins, options, components });
   function handleOnChange(slateObject) {
     setValue(slateObject);
     setMarkdownValue(slateToMd(slateObject));
     const html = serializeHTMLFromNodes(editor, {
-      plugins: plugins,
+      plugins,
       nodes: value ? [...value] : [],
     });
     setHtmlValue(html);
@@ -348,33 +357,37 @@ function App() {
     <div className="container">
       <div className="column">
         <h4>Slate editor</h4>
-        <header className="toolbar">
-          <ul className="toolbar__list">
-            <li className="toolbar__listitem">
-              <ToolbarButtonsBasicElements />
-            </li>
-            <li className="toolbar__listitem">
-              <ToolbarButtonsBasicMarks />
-            </li>
-            <li className="toolbar__listitem">
-              <ToolbarButtonsList />
-            </li>
-            <li className="toolbar__listitem">
-              <ToolbarButtonsTable />
-              <ToolbarLinkElement /> <ToolbarImageElement />
-            </li>
-          </ul>
-          {/* <ToolbarButtonsBasicElements />
+        <HeadingToolbar>
+          <header className="toolbar">
+            <ul className="toolbar__list">
+              <li className="toolbar__listitem">
+                <ToolbarButtonsBasicElements />
+              </li>
+              <li className="toolbar__listitem">
+                <ToolbarButtonsBasicMarks />
+              </li>
+              <li className="toolbar__listitem">
+                <ToolbarButtonsList />
+              </li>
+              <li className="toolbar__listitem">
+                <ToolbarButtonsTable />
+                <ToolbarLinkElement /> <ToolbarImageElement />
+              </li>
+            </ul>
+            {/* <ToolbarButtonsBasicElements />
           <ToolbarButtonsBasicMarks />
           <ToolbarButtonsList />
           <ToolbarLinkElement />
           <ToolbarImageElement />
           <ToolbarButtonsTable /> */}
-        </header>
+          </header>
+        </HeadingToolbar>
         <SlatePlugins
+          id={id}
           plugins={plugins}
           components={components}
           options={options}
+          autofocus={true}
           editableProps={editableProps}
           onChange={(newValue) => handleOnChange(newValue)}
         />

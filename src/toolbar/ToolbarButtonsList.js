@@ -8,7 +8,6 @@ import {
 } from "@udecode/slate-plugins";
 export const ToolbarButtonsList = () => {
   const editor = useStoreEditorRef(useEventEditorId("focus"));
-
   return (
     <>
       <span className="toolbar__button">
