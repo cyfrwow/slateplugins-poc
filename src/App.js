@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import MonacoEditor from "./MonacoEditor";
 import {
   SlatePlugins,
@@ -71,7 +71,7 @@ import {
   KEYS_HEADING,
   HeadingToolbar,
 } from "@udecode/slate-plugins";
-import { createEditor } from "slate";
+// import { createEditor } from "slate";
 import slateToMd from "./slateToMd";
 import {
   ToolbarButtonsBasicElements,
@@ -334,7 +334,10 @@ function App() {
   //     createEditor(),
   //     withSlatePlugins({ id, plugins, options, components })
   //   );
-  const editor = createEditorPlugins({ id, plugins, options, components });
+  const editor = useMemo(
+    () => createEditorPlugins({ id, plugins, options, components }),
+    []
+  );
   function handleOnChange(slateObject) {
     setValue(slateObject);
     setMarkdownValue(slateToMd(slateObject));
