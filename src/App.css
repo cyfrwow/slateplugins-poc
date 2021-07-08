@@ -24,10 +24,10 @@
 }
 .toolbar__listitem {
   display: flex;
-  border-right: 1px solid #ededed;
 }
 .toolbar__button {
   margin: 0 2px;
+  border-right: 1px solid #ededed;
 }
 .slate-ToolbarButton-active {
   background-color: #f2f2f2;
