@@ -38,13 +38,13 @@ const turndownService = new TurndownService({
     replacement: function (content) {
       return "~~" + content + "~~";
     },
-  })
-  .addRule("codeBlock", {
-    filter: ["pre"],
-    replacement: function (content) {
-      return "```js\n" + content + "\n```";
-    },
   });
+//   .addRule("codeBlock", {
+//     filter: ["pre"],
+//     replacement: function (content) {
+//       return "```js\n" + content + "\n```";
+//     },
+//   });
 
 function App() {
   const id = "slate-plugins-editor";
@@ -74,10 +74,12 @@ function App() {
         nodes: value,
       });
       setHtmlValue(html);
-      //   setMarkdownValue(nhm.translate(html));
-      setMarkdownValue(turndownService.turndown(html));
     }
   }, [value, editor]);
+
+  useEffect(() => {
+    setMarkdownValue(turndownService.turndown(htmlValue));
+  }, [htmlValue]);
 
   function handleOnChange(slateObject) {
     setValue(slateObject);
