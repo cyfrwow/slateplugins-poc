@@ -12,10 +12,39 @@ import {
 import Toolbar from "./toolbar";
 import plugins from "./plugins";
 import htmlfile from "./test";
+// import { NodeHtmlMarkdown, NodeHtmlMarkdownOptions } from "node-html-markdown";
+import TurndownService from "turndown";
+import { gfm } from "turndown-plugin-gfm";
 import "./App.css";
 
 const components = createSlatePluginsComponents();
 const options = createSlatePluginsOptions();
+
+// const nhm = new NodeHtmlMarkdown(
+//   /* options (optional) */ {
+//     bulletMarker: "-",
+//   },
+//   /* customTransformers (optional) */ undefined
+// );
+
+const turndownService = new TurndownService({
+  headingStyle: "atx",
+  codeBlockStyle: "fenced",
+  emDelimiter: "*",
+})
+  .use([gfm])
+  .addRule("strikethrough", {
+    filter: ["del", "s", "strike"],
+    replacement: function (content) {
+      return "~~" + content + "~~";
+    },
+  })
+  .addRule("codeBlock", {
+    filter: ["pre"],
+    replacement: function (content) {
+      return "```js\n" + content + "\n```";
+    },
+  });
 
 function App() {
   const id = "slate-plugins-editor";
@@ -36,6 +65,7 @@ function App() {
 
   const [value, setValue] = useState(initialValue);
   const [htmlValue, setHtmlValue] = useState("");
+  const [markdownValue, setMarkdownValue] = useState("");
 
   useEffect(() => {
     if (value) {
@@ -44,6 +74,8 @@ function App() {
         nodes: value,
       });
       setHtmlValue(html);
+      //   setMarkdownValue(nhm.translate(html));
+      setMarkdownValue(turndownService.turndown(html));
     }
   }, [value, editor]);
 
@@ -78,6 +110,9 @@ function App() {
       </div>
       <div className="column">
         <MonacoEditor slateObject={htmlValue} />
+      </div>
+      <div className="column">
+        <textarea className="textArea" value={markdownValue}></textarea>
       </div>
     </div>
   );

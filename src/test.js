@@ -1,19 +1,4 @@
-const html = `<div><h1 font-size="16" class="sc-Axmtr iYzqgy">Rendering on slate from HTML file</h1>
-  <p>
-    This example shows how to enforce your layout with domain-specific
-    constraints. This document will always have a title block at the top and a
-    trailing paragraph. Try deleting them and see what happens!
-  </p>
-  <p>
-    Slate editors can edit complex, nested data structures. And for the most
-    part this is great. But in certain cases inconsistencies in the data
-    structure can be introduced—most often when allowing a user to paste
-    arbitrary richtext content."Normalizing" is how you can ensure that your
-    editor&#x27;s content is always of a certain shape. It&#x27;s similar to
-    "validating", except instead of just determining whether the content is
-    valid or invalid, its job is to fix the content to make it valid again.
-  </p>
-</div>
+const html = `
 <div><p>Deserialized paragraph here.</p></div>
 <div>
   <p>
@@ -22,7 +7,7 @@ const html = `<div><h1 font-size="16" class="sc-Axmtr iYzqgy">Rendering on slate
   </p>
   <p>
     <strong>Bold, </strong><em>italic, </em><u>underline, </u
-    ><span class="sc-fznxsB cuxHyi strikethrough">strikethrough, </span
+    ><del>strikethrough, </del
     ><strong>mixed, </strong><code class="sc-fzpjYC erRYCd">line</code
     ><sub>sub, </sub><sup>sup, </sup>
     </p>
