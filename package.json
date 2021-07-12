@@ -1,7 +1,6 @@
 {
   "name": "slateplugins-poc",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@monaco-editor/react": "^4.2.1",
     "@udecode/slate-plugins": "^1.0.0-next.39",
