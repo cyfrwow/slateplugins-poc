@@ -50,25 +50,25 @@ const html = `
     Since the editor is based on a recursive tree model, similar to an HTML
     document, you can create complex nested structures, like tables:
   </p>
-  <table class="sc-fzqBZW dmVXSF">
+  <table>
     <tbody>
       <tr>
-        <td class="sc-fzokOt hjmskT"></td>
-        <td class="sc-fzokOt hjmskT"><strong>Human</strong></td>
-        <td class="sc-fzokOt hjmskT"><strong>Dog</strong></td>
-        <td class="sc-fzokOt hjmskT"><strong>Cat</strong></td>
+        <td></td>
+        <td><strong>Human</strong></td>
+        <td><strong>Dog</strong></td>
+        <td><strong>Cat</strong></td>
       </tr>
       <tr>
-        <td class="sc-fzokOt hjmskT"><strong># of Feet</strong></td>
-        <td class="sc-fzokOt hjmskT">2</td>
-        <td class="sc-fzokOt hjmskT">4</td>
-        <td class="sc-fzokOt hjmskT">4</td>
+        <td><strong># of Feet</strong></td>
+        <td>2</td>
+        <td>4</td>
+        <td>4</td>
       </tr>
       <tr>
-        <td class="sc-fzokOt hjmskT"><strong># of Lives</strong></td>
-        <td class="sc-fzokOt hjmskT">1</td>
-        <td class="sc-fzokOt hjmskT">1</td>
-        <td class="sc-fzokOt hjmskT">9</td>
+        <td><strong># of Lives</strong></td>
+        <td>1</td>
+        <td>1</td>
+        <td>9</td>
       </tr>
     </tbody>
   </table>
